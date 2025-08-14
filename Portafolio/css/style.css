@@ -1,0 +1,203 @@
+@font-face {
+  font-family: 'ClimbingNevis';
+  src: url('fonts/ClimbingNevis.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: 'ClimbingNevis', sans-serif;
+  background: radial-gradient(circle at top left, #083d6b 0%, #001f3f 100%);
+  color: white;
+}
+
+header {
+  background-color: #0d2b45;
+  padding: 40px 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-bottom: 4px solid #1c6ea4;
+}
+
+.header-content h1 {
+  font-size: 3.5em;
+  margin: 0;
+  letter-spacing: 2px;
+  color: #5be0c2;
+}
+
+.header-content p {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #8fe4d7;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 0;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1em;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #5be0c2;
+}
+
+main {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: none; /* quitamos el fondo azul */
+}
+
+.content-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 60px 10%;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease, visibility 0s linear 0.6s;
+  min-height: 100vh; /* ocupa toda la pantalla */
+}
+
+.content-section.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+  z-index: 2;
+}
+
+.text-box {
+  max-width: 600px;
+  margin: auto;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-left: 4px solid #5be0c2;
+}
+
+/* Galería */
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.image-grid img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.image-grid img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* Contacto */
+#contact {
+  background: linear-gradient(to bottom, #002f4b, #005f6b);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-container {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.contact-form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.contact-form button {
+  background-color: #00bfa6;
+  color: white;
+  padding: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #009688;
+}
+
+/* Lightbox en pantalla completa */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.95);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-content {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .image-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}

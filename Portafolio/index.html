@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Insignis Portfolio</title>
+  <link rel="stylesheet" href="./css/style.css"/>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <h1>INSIGNIS</h1>
+      <p>Digital artist - 3D Modeling</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" data-section="about">About Me</a></li>
+        <li><a href="#" data-section="concept">Concept Art</a></li>
+        <li><a href="#" data-section="modeling">3DModeling</a></li>
+        <li><a href="#" data-section="render">Renderer</a></li>
+        <li><a href="#" data-section="contact">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <section id="about" class="content-section active">
+      <div class="text-box">
+        <h2>About Me</h2>
+        <p>Welcome to my digital art and 3D modeling portfolio. Here you'll find selected works showcasing storytelling, design, and technical execution.</p>
+      </div>
+    </section>
+
+    <section id="concept" class="content-section">
+  <h2>Ilustration & Concept Art</h2>
+  <div class="image-grid">
+    <img src="img/ilustracion/WhatsApp Image 2025-08-07 at 10.00.25 PM.jpeg" alt="">
+    <img src="img/ilustracion/WhatsApp Image 2025-08-07 at 10.01.41 PM (1).jpeg" alt="">
+    <img src="img/ilustracion/WhatsApp Image 2025-08-07 at 10.01.41 PM (2).jpeg" alt="">
+    <img src="img/ilustracion/WhatsApp Image 2025-08-07 at 10.01.41 PM.jpeg" alt="">
+    <img src="img/ilustracion/WhatsApp Image 2025-08-07 at 10.01.42 PM.jpeg" alt="">
+    <img src="img/ilustracion/WhatsApp Image 2025-08-07 at 9.52.26 PM (1).jpeg" alt="">
+    <img src="img/ilustracion/WhatsApp Image 2025-08-07 at 9.52.26 PM.jpeg" alt="">
+  </div>
+</section>
+
+<section id="modeling" class="content-section">
+  <h2>3D Modeling</h2>
+  <div class="image-grid">
+    <img src="img/modelado 3d/render_carro.jpg" alt="">
+    <img src="img/modelado 3d/rueda_render.jpg" alt="">
+    <img src="img/modelado 3d/tetera_render.jpg" alt="">
+    <img src="img/modelado 3d/WhatsApp Image 2025-08-07 at 9.52.26 PM (2).jpeg" alt="">
+  </div>
+</section>
+
+<section id="render" class="content-section">
+  <h2>Renderer</h2>
+  <div class="image-grid">
+    <img src="img/render/render_1.jpg" alt="">
+    <img src="img/render/render_2.jpg" alt="">
+    <img src="img/render/render_3.jpg" alt="">
+    <img src="img/render/Render_Cementerio.jpg" alt="">
+    <img src="img/render/render_Noche.jpg" alt="">
+  </div>
+</section>
+
+
+ <section id="contact" class="content-section">
+  <h2>Contact <span>Insignis</span></h2>
+  <div class="contact-container">
+
+    <form class="contact-form">
+      <input type="text" name="name" placeholder="Name *" required>
+      <input type="email" name="email" placeholder="Email *" required>
+      <textarea name="message" placeholder="Message *" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="lightbox image">
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Navegación entre secciones con transición
+    const links = document.querySelectorAll("nav a");
+    const sections = document.querySelectorAll(".content-section");
+
+    links.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const target = link.getAttribute("data-section");
+
+        sections.forEach(section => {
+          if (section.id === target) {
+            section.classList.add("active");
+          } else {
+            section.classList.remove("active");
+          }
+        });
+      });
+    });
+
+    // Lightbox
+    document.querySelectorAll('.image-grid img').forEach(img => {
+      img.addEventListener('click', () => {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        lightboxImg.src = img.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    document.querySelector('.lightbox-close').addEventListener('click', () => {
+      document.getElementById('lightbox').style.display = 'none';
+    });
+
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox') {
+        e.currentTarget.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
